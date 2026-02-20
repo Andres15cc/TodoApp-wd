@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 
 
 const loginRouter = require('./controllers/login');
+const todosRouter = require('./controllers/todo');
+const { userExtractor } = require('./middleware/auth');
 
 
 // Rutas
@@ -30,6 +32,7 @@ app.use('/', express.static(path.resolve('views', 'home')));
 app.use('/styles', express.static(path.resolve('views', 'styles')));
 app.use('/signup', express.static(path.resolve('views', 'signup')));
 app.use('/login', express.static(path.resolve('views', 'login')));
+app.use('/todos', express.static(path.resolve('views', 'todos')));
 app.use('/components', express.static(path.resolve('views', 'components')));
 app.use('/images', express.static(path.resolve('img')));
 
@@ -38,6 +41,7 @@ app.use('/images', express.static(path.resolve('img')));
 
 
 app.use('/api/login', loginRouter);
+app.use('/api/todos', todosRouter);
 
 
 
