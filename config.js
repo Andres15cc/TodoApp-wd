@@ -1,5 +1,5 @@
 const PAGE_URL = process.env.NODE_ENV === 'production'
-    ? 'placeholder'
+    ? 'https://todoapp-wd.onrender.com/'
     : 'http://localhost:3001'
 
 const MONGO_URI = process.env.NODE_ENV === 'production'

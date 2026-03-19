@@ -12,10 +12,16 @@ const notification = document.querySelector('#notification');
 //Regex validation
 const NAME_VALIDATION =
   /^[A-Z\u00d1][a-zA-Z-ÿí\u00f1\u00d1]+(\s*[A-Z\u00d1][a-zA-Z-ÿí\u00f1\u00d1\s]*)$/;
-const EMAIL_VALIDATION =
+// \u00f1\u00d1= Permite la ñ y la Ñ dentro del nombre.
+// \s* = Permite espacios en blanco antes del siguiente nombre.
+//-ÿ = Esto es un truco para incluir casi todos los caracteres latinos con tildes (como á, é, ö, etc.).
+  const EMAIL_VALIDATION =
   /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 const PASSWORD_VALIDATION =
-  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,15}$/;
+//.* = cualquier carácter, cualquier cantidad de veces
+// \d = símbolo especial para "digit" (dígito). Representa cualquier número del 0 al 9.
+// (?= ) Mira hacia adelante en el texto y asegúrate de que lo que sigue esté ahí
 
 //Validations 
 // Variables que guardan el estado de cada input (empiezan en false porque están vacíos)
