@@ -1,20 +1,18 @@
 const logoutRouter = require('express').Router();
 
 logoutRouter.get('/', async (request, response) => {
-   
-    
-    const cookieOptions = {
-        secure: process.env.NODE_ENV === 'production',
-        httpOnly: true,
-        sameSite: 'None',
-        path: '/' 
-    };
+    const cookies = request.cookies;
 
-   
-    response.clearCookie('accessToken', cookieOptions);
-    response.clearCookie('accesToken', cookieOptions);
+    if(!cookies?.accessToken) {
+        return response.sendStatus(401);
+    }
 
-    
+
+    response.clearCookie('accessToken', {
+      secure: process.env.NODE_ENV === 'production',
+      httpOnly: true,  
+    });
+
     return response.sendStatus(204);
 });
 
