@@ -88,8 +88,10 @@ if(window.location.pathname === '/') {
     createNavTodos();
 }
 
-const navBtn = navbar.children[0].children[1];
+// El ?. hace que JS ignore la línea si el botón no está en el HTML
+const navBtn = navbar.children[0]?.children[1];
 
+if (navBtn) {
 navBtn.addEventListener('click', e => {
     const menuMobile = navbar.children[0].children[2];
     
@@ -105,23 +107,27 @@ navBtn.addEventListener('click', e => {
         menuMobile.classList.remove('flex');
     }
 })
+};
 
-const closeBtnDesktop = navbar.children[0].children[3].children[0];
-const closeBtnMobile = navbar.children[0].children[2].children[0];
+// El ?. hace que JS ignore la línea si el botón no está en el HTML
+const closeBtnDesktop = navbar.children[0]?.children[3]?.children[0];
+const closeBtnMobile = navbar.children[0]?.children[2]?.children[0];
 
-closeBtnDesktop.addEventListener('click', async e => {
+// El ?. hace que JS ignore la línea y no se ejecuta el evento si no tiene ningún valor
+closeBtnDesktop?.addEventListener('click', async e => {
     try {
         await axios.get('/api/logout');
         window.location.pathname = '/login';
     } catch (error) {
         console.log(error);
     }
-})
-closeBtnMobile.addEventListener('click', async e => {
+});
+
+closeBtnMobile?.addEventListener('click', async e => {
     try {
         await axios.get('/api/logout');
         window.location.pathname = '/login';
     } catch (error) {
         console.log(error);
     }
-})
+});

@@ -89,10 +89,11 @@ form.addEventListener('submit', async e => {
   const { data } = await axios.post('/api/users', newUser);
   // Si sale bien, muestra notificación verde con el mensaje del backend.
   createNotification(false, data);
-  // A los 5 segundos, vacía el mensaje.
+
+ //LA REDIRECCIÓN: Esperamos 2 segundos y lo mandamos al login
   setTimeout(() => {
-    notification.innerHTML = '';
-  }, 5000)
+      window.location.href = '../login/index.html'; 
+    }, 2000);
 
   // Limpia los campos del formulario.
   nameInput.value = '';
