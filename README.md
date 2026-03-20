@@ -69,7 +69,7 @@ TodoApp es una aplicación web profesional diseñada para la gestión de tareas 
    Crea un archivo `.env` en la raíz con:
    ```env
    MONGO_URI=tu_conexion_mongodb
-   JWT_SECRET=tu_secreto_super_seguro
+   ACCESS_TOKEN_SECRET=tu_secreto_super_seguro
    EMAIL_API_KEY=tu_api_key_de_emaillistverify
    ```
 4. **Iniciar el servidor:**
